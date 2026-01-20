@@ -1,14 +1,26 @@
+import React, { useState } from 'react';
 import './App.css';
 
-const [todos, setTodos] = useState([]);
 function App() {
+  const [todos, setTodos] = useState([]);
+
+  function addTodo(todo) {
+    const newTodo = {
+      id: Date.now(),
+      text: todo,
+      completed: false,
+    };
+
+    setTodos([...todos, newTodo]);
+    console.log('Current Todos:', [...todos, newTodo]);
+  }
+
   return (
-    <title>My Todo List</title>
+    <div className="App">
+      <h1>My Todo List</h1>
+      <button onClick={() => addTodo("hey")} >Add Todo</button>
+    </div>
   );
-}
-
-function addTodo(todo) {
-
 }
 
 export default App;
